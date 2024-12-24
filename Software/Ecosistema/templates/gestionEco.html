@@ -1,0 +1,79 @@
+{% extends "./base.html" %} 
+
+{% block title %} Conservacion de Ecosistemas Terrestres {% endblock %}
+
+{% block body %} 
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success shadow-sm">
+            <button type="button" class="btn-close" data-bs-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="card  card animate__animated animate__fadeInUp shadow border-0">
+            <div class="card-body">
+                <h3 class="card-title text-center">REGISTRAR ECOSISTEMA</h3>
+                <form action="/registrarEcosistema/" method="POST">{% csrf_token %}
+                    <div class="from-group row mb-2">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre" 
+                        maxlength="100" required>
+                    </div>
+                    <div class="from-group row mb-2">
+                        <input type="text" id="txtTipo" name="txtTipo" class="form-control" placeholder="Tipo" 
+                        maxlength="100" required>
+                    </div>
+                    <div class="from-group row mb-2">
+                        <input type="text" id="txtArea" name="txtArea" class="form-control"  min='1' max="100000" value='1' required>
+                    </div>
+                    <div class="from-group row mb-2">
+                        <input type="text" id="txtUbicacion" name="txtUbicacion" class="form-control" placeholder="Ubicacion" 
+                        maxlength="1000" required>
+                    </div>
+                    <div class="from-group row mb-2">
+                        <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" 
+                        maxlength="10000" required>
+                    </div>
+                    <div class="from-group row mb-4">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar <i class="fas fa-save"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1 class="display-4 text-center my-1" style="color:rgb(34, 183, 32);">Listado de Ecosistemas</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>NOMBRE</th>
+                        <th>TIPO</th>
+                        <th>AREA</th>
+                        <th>UBICACION</th>
+                        <th>DESCRIPCION</th>
+                        <th colspan="2" class="text-center">OPCIONES</th>
+                    </tr>      
+                </thead>
+                <tbody>
+                    {% for c in Ecosistemas %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.tipo }}</td>
+                        <td>{{ c.area }}</td>
+                        <td>{{ c.ubicacion }}</td>
+                        <td>{{ c.descripcion }}</td>
+                        <td><a href="edicionEcosistema/{{c.nombre}}" class="btn btn-info"><i class="fas fa-edit"></i>EDITAR</a></td>
+                        <td><a href="eliminarEcosistema/{{c.nombre}}" class="btn btn-danger btnEliminacion"><i class="fas fa-trash"></i>ELIMINAR</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

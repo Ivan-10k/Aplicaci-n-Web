@@ -1,0 +1,67 @@
+/* Estilo global para toda la página */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente principal */
+    background-color: #ffffff; /* Fondo */
+    color: #333; /* Color del texto */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lobster', cursive;
+    color: #0056b3; /* Azul para encabezados */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para los enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Estilos para botones */
+button, .btn {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Estilos para tablas */
+table {
+    font-size: 0.9rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Formulario */
+input, textarea, select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #0056b3;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}

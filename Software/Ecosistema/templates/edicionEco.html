@@ -1,0 +1,39 @@
+{% extends "./base.html" %} 
+
+{% block title %} Gestion de Ecosistemas {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-7 col-lg-7 col-xl-4">
+        <h2>Edicion de Ecosistema</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarEcosistema/" method="POST">{% csrf_token %}
+                    <div class="from-group">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{ecosistema.nombre}}" class="form-control" placeholder="Nombre" 
+                        maxlength="100" readonly required>
+                    </div>
+                    <div class="from-group">
+                        <input type="text" id="txtTipo" name="txtTipo" value="{{ecosistema.tipo}}" class="form-control" placeholder="Tipo" 
+                        maxlength="100" required>
+                    </div>
+                    <div class="from-group">
+                        <input type="text" id="txtArea" name="txtArea" value="{{ecosistema.area}}" class="form-control"  min='1' max="100000" value='1' required>
+                    </div>
+                    <div class="from-group">
+                        <input type="text" id="txtUbicacion" name="txtUbicacion" value="{{ecosistema.ubicacion}}" class="form-control" placeholder="Ubicacion" 
+                        maxlength="1000" required>
+                    </div>
+                    <div class="from-group">
+                        <input type="text" id="txtDescripcion" name="txtDescripcion" value="{{ecosistema.descripcion}}" class="form-control" placeholder="Descripcion" 
+                        maxlength="10000" required>
+                    </div>
+                    <div class="from-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
